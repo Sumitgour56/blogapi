@@ -32,5 +32,9 @@ app.post("/",(req,res)=>{
 
     })
 })
+app.get("/",async(req,res)=>{
+ const data = await ImageModel.find()
+ res.send(data)
+})
 app.listen(4000)
 
