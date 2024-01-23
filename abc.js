@@ -25,7 +25,7 @@ app.post("/",(req,res)=>{
     upload(req,res,(err)=>{
         const newimage = new ImageModel({
             name:req.body.name,
-            image:"localhost:4000/upload/"+req.file.filename
+            image:"https://blogapi-56x5.onrender.com/upload/"+req.file.filename
         })
           newimage.save()
         res.send("file uploaded")
