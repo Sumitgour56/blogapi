@@ -39,5 +39,17 @@ app.get("/",async(req,res)=>{
  const data = await ImageModel.find()
  res.send(data)
 })
+
+app.put('/update',upload,async (req,res)=>{
+    const data =await ImageModel.updateMany({bid:req.body.bid},{$set:{bname:req.body.bname,bcat : req.body.bcat,bdesc:req.body.bdesc}})
+     console.log(data)
+    res.send(data)
+})
+
+app.delete('/delete',upload, async (req,res)=>{
+    const data = await ImageModel.deleteOne({name:req.body.name})
+    console.log(data)
+    res.send(data)
+}) 
 app.listen(4000)
 
