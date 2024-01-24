@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage}).single("image");
+const upload = multer({ storage: storage}).single("bimage");
 
 app.post("/",(req,res)=>{
     // const data = new student(req.body)
@@ -24,8 +24,11 @@ app.post("/",(req,res)=>{
     // res.send(result)
     upload(req,res,(err)=>{
         const newimage = new ImageModel({
-            name:req.body.name,
-            image:"https://blogapi-56x5.onrender.com/upload/"+req.file.filename
+            bid : req.body.bid,
+            bname : req.body.bname,
+            bdesc : req.body.bdesc,
+            bcat : req.body.bcat,
+            bimage:"https://blogapi-56x5.onrender.com/upload/"+req.file.filename
         })
           newimage.save()
         res.send("file uploaded")
